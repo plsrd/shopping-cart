@@ -7,31 +7,27 @@ const Carousel = () => {
   const [featuredItems] = useState(keycapData.filter(item => item.isFeatured))
 
 
-  let timer =  setTimeout(() => {
+  useEffect(() => {
+    let timer =  setTimeout(() => {
       currentIndex === featuredItems.length - 1 ? setCurrentIndex(0) : setCurrentIndex(currentIndex + 1)
     }, 2000)
 
-
-  useEffect(() => {
-
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [currentIndex])
+    return () => clearTimeout(timer)
+  })
 
   const {featuredImage, name, category, id} = featuredItems[currentIndex]
   return (
     <div className='carousel'>
-      <div>
+      <div className='hero-container'>
         <div>
           <Link to={`/${category}/${id}`}>{name}</Link>
         </div>
-        <img src={featuredImage} />
+        <img src={featuredImage} alt={name}/>
       </div>
-      <div>
+      <div className='carousel-link-container'>
         {featuredItems.map(item => {
           return (
-            <img src={item.featuredImage} />
+            <img className='carousel-link' src={item.featuredImage} alt={name}/>
           )
         })}
       </div>

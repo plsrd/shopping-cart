@@ -4,6 +4,8 @@ import KeycapPage from './components/KeycapPage'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 
+import './styles/app.css'
+
 const App = () => {
   return (
 

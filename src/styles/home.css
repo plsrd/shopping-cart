@@ -1,0 +1,9 @@
+.carousel-link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.carousel-link {
+  width: 200px;
+}
