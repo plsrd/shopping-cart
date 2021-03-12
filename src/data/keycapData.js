@@ -36,7 +36,9 @@ const keycapData = [
         image: variationImages.strawberry
       },
     ],
-    images: mainImages
+    images: mainImages,
+    isFeatured: true,
+    featuredImage: mainImages.hero2
   }
 ]
 

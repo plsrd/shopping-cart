@@ -1,44 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import hero1 from '../images/ck-artisan/hero1.webp'
-import hero5 from '../images/ck-artisan/hero5.webp'
-import hero6 from '../images/ck-artisan/hero6.webp'
+import keycapData from '../data/keycapData'
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-
-  const carouselItems = [
-    {
-      image: hero1,
-      path:'/keycaps',
-      description:'hero1'
-    },
-    {
-      image: hero5,
-      path:'/keycaps',
-      description:'hero5'
-    },
-    {
-      image: hero6,
-      path:'/keycaps',
-      description:'hero6'
-    },
-
-  ]
+  const [featuredItems] = useState(keycapData.filter(item => item.isFeatured))
 
   useEffect(() => {
     setTimeout(() => {
-      currentIndex === carouselItems.length - 1 ? setCurrentIndex(0) : setCurrentIndex(currentIndex + 1)
+      currentIndex === featuredItems.length - 1 ? setCurrentIndex(0) : setCurrentIndex(currentIndex + 1)
     }, 2000)
   }, [currentIndex])
 
-  const {image, description, path} = carouselItems[currentIndex]
+  const {featuredImage, name, category, id} = featuredItems[currentIndex]
   return (
     <div className='carousel'>
       <div>
-        <Link to={path}>{description}</Link>
+        <Link to={`/${category}/${id}`}>{name}</Link>
       </div>
-      <img src={image} />
+      <img src={featuredImage} />
     </div>
   )
 }
