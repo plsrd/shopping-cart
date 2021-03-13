@@ -1,10 +1,12 @@
 import React from 'react'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import './styles/reset.css'
+import './styles/app.css'
+
 import KeycapPage from './components/KeycapPage'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
-
-import './styles/app.css'
 
 const App = () => {
   return (

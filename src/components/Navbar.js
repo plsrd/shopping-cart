@@ -4,7 +4,7 @@ import '../styles/navbar.css'
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className='navbar'>
       <Link to='/'>Clack Council</Link>
       <div className='navbar-links'>
         <Link to='/keycaps'>Keycaps</Link>

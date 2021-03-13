@@ -1,9 +1,58 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-link {
+  position: fixed;
+  top: 85px;
+  left: 50px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1em;
+  background-color: rgb(218, 57, 204);
+  padding: 1em;
+}
+
+.product-link a {
+  color: white;
+}
+
 .carousel-link-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .carousel-link {
-  width: 200px;
+  width: 160px;
+}
+
+.about-container {
+  margin-top: 2em;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.top-line {
+  margin-left: 1.5em;
+}
+
+.about-body {
+  width: 80%;
+  align-self: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2em;
+}
+
+.about-body p {
+  margin: 1em 0;
+  text-align: justify;
 }

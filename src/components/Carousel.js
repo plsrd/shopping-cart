@@ -10,7 +10,7 @@ const Carousel = () => {
   useEffect(() => {
     let timer =  setTimeout(() => {
       currentIndex === featuredItems.length - 1 ? setCurrentIndex(0) : setCurrentIndex(currentIndex + 1)
-    }, 2000)
+    }, 2500)
 
     return () => clearTimeout(timer)
   })
@@ -19,7 +19,7 @@ const Carousel = () => {
   return (
     <div className='carousel'>
       <div className='hero-container'>
-        <div>
+        <div className='product-link'>
           <Link to={`/${category}/${id}`}>{name}</Link>
         </div>
         <img src={featuredImage} alt={name}/>
