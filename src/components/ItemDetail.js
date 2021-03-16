@@ -1,23 +1,78 @@
 import React, { useState, useEffect } from 'react'
 import keycapData from '../data/keycapData'
 
+import '../styles/itemDetail.css'
+
 
 const ItemDetail = ({match}) => {
   const [currentIndex, setCurrentIndex]=useState(0)
+  const [currentSelection, setCurrentSelection] = useState({})
+  const [quantity, setQuantity] = useState(0)
+
   const item = keycapData.find(item => item.id === match.params.id)
   const { images } = item
   const keys = Object.keys(images)
 
+  const {price, variations, description} = item
+
+  const handleVariationClick = (variation) => {
+    setCurrentIndex(keys.indexOf(variation.id))
+    setCurrentSelection({
+      item: variation.name,
+      id: `${item.id}-${variation.name}`,
+    })
+  }
+
+  const handleChange = (e) => {
+    if  (currentSelection.item !== '') { setQuantity(e.target.value) }
+  }
+
+  useEffect(() => {
+    item.variations.length > 0 ? setCurrentSelection({item: '', id: ''}) : setCurrentSelection({item: item.name, id: item.id})
+  }, [])
+
   return (
-    <div>
+    <div className='item-container'>
       <h1>{item.name}</h1>
-      <img src={images[keys[currentIndex]]} alt={keys[currentIndex]}/>
-      {Object.keys(images).map(key => 
-        <img 
-          src={images[key]} 
-          onClick={() => setCurrentIndex(keys.indexOf(key))}
-          alt={key}
-        />)}
+      <img 
+        src={images[keys[currentIndex]]}
+        alt={keys[currentIndex]}
+        className='main-image'
+      />
+      <div className='images-container'>
+        {Object.keys(images).map(key => 
+          <img 
+            src={images[key]} 
+            onClick={() => setCurrentIndex(keys.indexOf(key))}
+            alt=''
+            className='item-images'
+          />)}
+      </div>
+      <div className='price-container'>
+        <p>{price}</p>
+        <div className='variations-container'>
+          {variations.length > 0 ? variations.map(variation => (
+            <button onClick={() => handleVariationClick(variation)}>{variation.name}</button>
+          )) : null}
+          <p>Current Selection: {currentSelection.item}</p>
+          <p>{quantity}</p>
+        </div>
+        <label></label>
+        <select
+          name='quantity' 
+          value={quantity} 
+          onChange={handleChange}
+        >
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+        </select>
+        <button>Add to Cart</button>
+      </div>
+      <p className='description-header'>{description.header}</p>
+      <p className='description-body'>{description.body}</p>
     </div>
   )
 }

@@ -1,0 +1,19 @@
+.item-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+}
+
+.images-container {
+  width: 820px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.item-images{
+  width: 65px;
+  margin: .3em .3em .3em 0;
+}

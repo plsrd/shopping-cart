@@ -1,12 +1,9 @@
 import ckImages from '../images/ck-artisan/index'
 import monitorImages from '../images/monitor-artisan/index'
-import monitorVariationImages from '../images/monitor-artisan/variations/index'
 import mt3Images from '../images/mt3/index'
 import camilloImages from '../images/camillo/index'
 import ravenImages from '../images/raven-artisan/index'
-import ravenVariationImages from '../images/raven-artisan/variations/index' 
 import processorImages from '../images/processor/index'
-import processorVariationImages from '../images/processor/variations/index'
 import yuriImages from '../images/yuri/index'
 import astroloImages from '../images/astrolokeys/index'
 import nerdImages from '../images/nerd/index' 
@@ -26,27 +23,27 @@ const keycapData = [
     variations: [
       {
         name: 'Lime',
-        id:'kc01-lime',
+        id:'lime',
         image: ckImages.lime
       },
       {
         name: 'Lemon',
-        id:'kc01-lemon',
+        id:'lemon',
         image: ckImages.lemon
       },
       {
         name: 'Kiwi',
-        id:'kc01-kiwi',
+        id:'kiwi',
         image: ckImages.kiwi
       },
       {
         name: 'Dragonfruit',
-        id:'kc01-dragonfruit',
+        id:'dragonfruit',
         image: ckImages.dragonfruit
       },
       {
         name: 'Strawberry',
-        id:'kc01-strawberry',
+        id:'strawberry',
         image: ckImages.strawberry
       },
     ],
@@ -67,23 +64,23 @@ const keycapData = [
     variations: [
       {
         name: 'Black',
-        id:'kc02-black',
-        image: monitorVariationImages.black
+        id:'black',
+        image: monitorImages.black
       },
       {
         name: 'Blue',
-        id:'kc02-blue',
-        image: monitorVariationImages.blue
+        id:'blue',
+        image: monitorImages.blue
       },
       {
         name: 'Clear',
-        id:'kc02-clear',
-        image: monitorVariationImages.clear
+        id:'clear',
+        image: monitorImages.clear
       },
       {
         name: 'White',
-        id:'kc02-white',
-        image: monitorVariationImages.white
+        id:'white',
+        image: monitorImages.white
       },
     ],
     images: monitorImages,
@@ -131,23 +128,23 @@ const keycapData = [
     variations: [
       {
         name: 'Darkness',
-        id:'kc05-darkness',
-        image: ravenVariationImages.darkness
+        id:'darkness',
+        image: ravenImages.darkness
       },
       {
         name: 'Laser Pink',
-        id:'kc05-laserPink',
-        image: ravenVariationImages.laserPink
+        id:'laserPink',
+        image: ravenImages.laserPink
       },
       {
         name: 'Laser Purple',
-        id:'kc05-laserPurple',
-        image: ravenVariationImages.laserPurple
+        id:'laserPurple',
+        image: ravenImages.laserPurple
       },
       {
         name: 'Wild Frog',
-        id:'kc05-wildFrog',
-        image: ravenVariationImages.wildFrog
+        id:'wildFrog',
+        image: ravenImages.wildFrog
       },
     ],
     images: ravenImages,
@@ -167,28 +164,28 @@ const keycapData = [
     variations: [
       {
         name: 'pink',
-        id:'kc06-pink',
-        image: processorVariationImages.pink
+        id:'pink',
+        image: processorImages.pink
       },
       {
         name: 'green',
-        id:'kc06-green',
-        image: processorVariationImages.green
+        id:'green',
+        image: processorImages.green
       },
       {
         name: 'orange',
-        id:'kc06-orange',
-        image: processorVariationImages.orange
+        id:'orange',
+        image: processorImages.orange
       },
       {
         name: 'blue',
-        id:'kc06-blue',
-        image: processorVariationImages.blue
+        id:'blue',
+        image: processorImages.blue
       },
       {
         name: 'gold',
-        id:'kc06-gold',
-        image: processorVariationImages.gold
+        id:'gold',
+        image: processorImages.gold
       },
     ],
     images: processorImages,
