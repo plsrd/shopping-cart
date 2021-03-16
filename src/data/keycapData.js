@@ -1,5 +1,4 @@
 import ckImages from '../images/ck-artisan/index'
-import ckVariationImages from '../images/ck-artisan/variations/index'
 import monitorImages from '../images/monitor-artisan/index'
 import monitorVariationImages from '../images/monitor-artisan/variations/index'
 import mt3Images from '../images/mt3/index'
@@ -28,27 +27,27 @@ const keycapData = [
       {
         name: 'Lime',
         id:'kc01-lime',
-        image: ckVariationImages.lime
+        image: ckImages.lime
       },
       {
         name: 'Lemon',
         id:'kc01-lemon',
-        image: ckVariationImages.lemon
+        image: ckImages.lemon
       },
       {
         name: 'Kiwi',
         id:'kc01-kiwi',
-        image: ckVariationImages.kiwi
+        image: ckImages.kiwi
       },
       {
         name: 'Dragonfruit',
         id:'kc01-dragonfruit',
-        image: ckVariationImages.dragonfruit
+        image: ckImages.dragonfruit
       },
       {
         name: 'Strawberry',
         id:'kc01-strawberry',
-        image: ckVariationImages.strawberry
+        image: ckImages.strawberry
       },
     ],
     images: ckImages,
@@ -243,7 +242,7 @@ const keycapData = [
     category:'keycaps',
     id: 'kc11',
     type:'set',
-    name:'Drop DSA Astrolokeys Keycaps by sailorhg & cassidoo',
+    name:'Drop DSA Astrolokeys Keycaps by sailorhg',
     price: 95,
     description: {
       header: 'Your Keyboard’s Future Is Written in the Stars',

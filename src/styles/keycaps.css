@@ -1,0 +1,30 @@
+.all-products-container {
+  align-self: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.keycap {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 2em;
+}
+
+.keycap p {
+  width: 300px;
+  word-wrap: break-word;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1.3em;
+  background-color: rgb(218, 57, 204);
+  color: white;
+  position: relative;
+  top: 80px;
+  left: -20px;
+  padding: .3em;
+}
+
+.product-image {
+  width: 450px;
+}

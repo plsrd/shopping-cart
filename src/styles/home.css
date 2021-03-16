@@ -5,8 +5,8 @@
 }
 
 .product-link {
-  position: fixed;
-  top: 85px;
+  position: absolute;
+  top: 180px;
   left: 50px;
   font-family: 'Press Start 2P', cursive;
   font-size: 1em;
@@ -28,6 +28,10 @@
   width: 160px;
 }
 
+.selected {
+  border: 2px solid rgb(218, 57, 204);
+}
+
 .about-container {
   margin-top: 2em;
   width: 90%;
@@ -38,7 +42,6 @@
 .about-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 3em;
-  font-weight: bold;
 }
 
 .top-line {
@@ -48,11 +51,12 @@
 .about-body {
   width: 80%;
   align-self: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Source Code Pro', monospace;
   font-size: 1.2em;
 }
 
 .about-body p {
-  margin: 1em 0;
+  margin: 1.5em 0;
   text-align: justify;
+  line-height: 1.3;
 }

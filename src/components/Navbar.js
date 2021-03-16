@@ -5,10 +5,9 @@ import '../styles/navbar.css'
 const Navbar = () => {
   return (
     <nav className='navbar'>
-      <Link to='/'>Clack Council</Link>
-      <div className='navbar-links'>
-        <Link to='/keycaps'>Keycaps</Link>
-      </div>
+      <Link to='/' className='main-link'>Clack Council</Link>
+      <Link to='/shop' className='shop-link'>Shop</Link>
+      <Link to='/cart' className='shop-link'>Cart</Link>
     </nav>
   )
 }
