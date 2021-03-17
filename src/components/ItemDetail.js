@@ -7,7 +7,7 @@ import '../styles/itemDetail.css'
 
 const ItemDetail = ({match, addToCart}) => {
   const item = keycapData.find(item => item.id === match.params.id)
-  const { images, id, name, price, variations, description } = item
+  const { images, name, price, variations, description } = item
   const [currentIndex, setCurrentIndex]=useState(0)
   const [currentSelection, setCurrentSelection] = useState({
     item: name,

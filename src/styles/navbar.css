@@ -25,3 +25,14 @@
   padding: 0 1em;
   font-size: 1.3em;
 }
+
+.cart-count {
+  position: absolute;
+  top: 64px;
+  right: 215px;
+  font-size: .5em;
+  border-radius: 50%;
+  background-color: rgb(218, 57, 204);
+  color: white;
+  padding: .3em .5em;
+}

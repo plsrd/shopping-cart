@@ -16,6 +16,7 @@ const App = () => {
   const addToCart = (item) => {
     setCartItems([...cartItems, item])
   }
+  
   return (
 
     <Router>
