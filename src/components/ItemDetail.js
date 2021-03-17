@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import keycapData from '../data/keycapData'
-
+import ImageContainer from './ImageContainer'
+import VariationContainer from './VariationContainer'
 import '../styles/itemDetail.css'
-
 
 const ItemDetail = ({match, addToCart}) => {
   const item = keycapData.find(item => item.id === match.params.id)
@@ -42,29 +42,21 @@ const ItemDetail = ({match, addToCart}) => {
   }, [])
 
   useEffect(() => {
-    setTimeout(() => setAdding(false), 1000)
+    let timer = setTimeout(() => setAdding(false), 1000)
+
+    return () => clearTimeout(timer)
   }, [adding])
 
   return (
     <div className='item-detail-container'>
       <p className='item-name'>{name}</p>
       <div className='detail-header'>
-        <div className='image-container'>
-          <img 
-            src={images[keys[currentIndex]]}
-            alt={keys[currentIndex]}
-            className='main-image'
-          />
-          <div className='images-container'>
-            {Object.keys(images).map(key => 
-              <img 
-                src={images[key]} 
-                onClick={() => setCurrentIndex(keys.indexOf(key))}
-                alt=''
-                className={`item-images ${currentIndex === keys.indexOf(key) ? 'selected' : ''}`}
-              />)}
-          </div>
-        </div>
+        <ImageContainer 
+          images={images}
+          keys={keys}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+        />
       </div>
       <div className='info-container'>
         <div className='description-container'>
@@ -73,20 +65,12 @@ const ItemDetail = ({match, addToCart}) => {
         </div>
         <div className='options-container'>
           <p className='price'>${price}</p>
-          <div className='variations-container'>
-            {variations.length > 0 ? variations.map(variation => (
-              <button 
-                onClick={() => handleVariationClick(variation)}
-                className={`variation-btn ${currentSelection.variation === variation.name ? 'selected-variation' : ''}`}
-              >
-                  {variation.name}
-              </button>
-            )) : null}
-          </div>
-          {variations.length > 0 ? (
-            <p className='current-selection'>
-                {currentSelection.item !== '' ? `Current selection: ${currentSelection.variation}` : 'Select Variation'}
-            </p>) : null}
+          {variations.length > 0 ? 
+            <VariationContainer 
+              variations={variations}
+              handleClick={handleVariationClick}
+              currentSelection={currentSelection}
+           /> : null}
           <label>Quantity
             <select
               name='quantity' 

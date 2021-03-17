@@ -110,6 +110,7 @@
 }
 
 .current-selection {
+  margin-top: 1em;
   width: 180px;
   text-align: end;
 }

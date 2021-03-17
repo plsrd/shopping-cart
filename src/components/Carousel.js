@@ -10,7 +10,7 @@ const Carousel = () => {
   useEffect(() => {
     let timer =  setTimeout(() => {
       currentIndex === items.length - 1 ? setCurrentIndex(0) : setCurrentIndex(currentIndex + 1)
-    }, 2500)
+    }, 1500)
 
     return () => clearTimeout(timer)
   })
