@@ -9,6 +9,7 @@ const ItemDetail = ({match, addToCart}) => {
   const [currentIndex, setCurrentIndex]=useState(0)
   const [currentSelection, setCurrentSelection] = useState({})
   const [quantity, setQuantity] = useState(0)
+  const [adding, setAdding] = useState(false)
 
   const item = keycapData.find(item => item.id === match.params.id)
   const { images, id, name, price, variations, description } = item
@@ -30,11 +31,16 @@ const ItemDetail = ({match, addToCart}) => {
   const handleAddClick = () => {
     if (currentSelection === {}) return
     addToCart(currentSelection)
+    setAdding(true)
   }
 
   useEffect(() => {
     item.variations.length > 0 ? setCurrentSelection({item: '', id: ''}) : setCurrentSelection({item: name, id: id})
   }, [])
+
+  useEffect(() => {
+    setTimeout(() => setAdding(false), 1000)
+  }, [adding])
 
   return (
     <div className='item-detail-container'>
@@ -86,7 +92,11 @@ const ItemDetail = ({match, addToCart}) => {
               <option value='5'>5</option>
             </select>
           </label>
-          <button className='add-btn' onClick={handleAddClick}>Add to Cart</button>
+          <button 
+            className={`add-btn${adding ? ' adding' : ''}` } 
+            onClick={handleAddClick}>
+              {adding === false ? 'Add to cart' : 'Added!'}
+          </button>
         </div>
       </div>
     </div>
