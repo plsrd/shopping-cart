@@ -13,7 +13,7 @@ const ItemDetail = ({match, addToCart}) => {
     item: name,
     variation: '',
     price: price,
-    quantity: 0
+    quantity: 1
   })
   const [adding, setAdding] = useState(false)
 

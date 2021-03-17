@@ -14,7 +14,7 @@ const VariationContainer = ({variations, handleClick, currentSelection }) => {
         </button>
       ))}
       <p className='current-selection'>
-          {currentSelection.item !== '' ? `Current selection: ${currentSelection.variation}` : 'Select Variation'}
+          {currentSelection.variation !== '' ? `Current selection: ${currentSelection.variation}` : 'Select Variation'}
       </p>
     </div>
   )
