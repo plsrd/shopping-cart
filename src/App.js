@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import './styles/reset.css'
@@ -8,8 +8,14 @@ import Shop from './components/Shop'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import ItemDetail from './components/ItemDetail'
+import Cart from './components/Cart'
 
 const App = () => {
+  const [cartItems, setCartItems] =useState([])
+
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item])
+  }
   return (
 
     <Router>
@@ -18,7 +24,8 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/shop' component={Shop} />
-          <Route path='/shop/:id' component={ItemDetail}/>
+          <Route path='/shop/:id' render={props => <ItemDetail addToCart={addToCart} />}/>
+          <Route path='/cart' render={() => <Cart cartItems={cartItems} />} />
         </Switch>
       </div>
     </Router>

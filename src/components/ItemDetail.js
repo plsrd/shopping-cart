@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom'
 import keycapData from '../data/keycapData'
 
 import '../styles/itemDetail.css'
 
 
-const ItemDetail = ({match}) => {
+const ItemDetail = ({match, addToCart}) => {
   const [currentIndex, setCurrentIndex]=useState(0)
   const [currentSelection, setCurrentSelection] = useState({})
   const [quantity, setQuantity] = useState(0)
@@ -24,6 +25,11 @@ const ItemDetail = ({match}) => {
 
   const handleChange = (e) => {
     if  (currentSelection.item !== '') { setQuantity(e.target.value) }
+  }
+
+  const handleAddClick = () => {
+    if (currentSelection === {}) return
+    addToCart(currentSelection)
   }
 
   useEffect(() => {
@@ -80,11 +86,11 @@ const ItemDetail = ({match}) => {
               <option value='5'>5</option>
             </select>
           </label>
-          <button className='add-btn'>Add to Cart</button>
+          <button className='add-btn' onClick={handleAddClick}>Add to Cart</button>
         </div>
       </div>
     </div>
   )
 }
 
-export default ItemDetail
+export default withRouter(ItemDetail)

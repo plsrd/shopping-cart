@@ -7,7 +7,7 @@
 .product-link {
   position: absolute;
   top: 180px;
-  left: 50px;
+  left: 100px;
   font-family: 'Press Start 2P', cursive;
   font-size: 1em;
   background-color: rgb(218, 57, 204);
@@ -42,6 +42,7 @@
 .about-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 3em;
+  margin-left: 1em;
 }
 
 .top-line {
@@ -52,7 +53,7 @@
   width: 80%;
   align-self: center;
   font-family: 'Source Code Pro', monospace;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .about-body p {
