@@ -7,9 +7,7 @@ const Navbar = ({items}) => {
     <nav className='navbar'>
       <Link to='/' className='main-link'>Clack Council</Link>
       <Link to='/shop' className='shop-link'>Shop</Link>
-      <Link to='/cart' className='shop-link'> Cart
-        {items > 0 ? <p className='cart-count'>{items}</p> : null}
-      </Link>
+      <Link to='/cart' className='shop-link'>{`Cart(${items})`}</Link>
     </nav>
   )
 }

@@ -12,9 +12,21 @@ import Cart from './components/Cart'
 
 const App = () => {
   const [cartItems, setCartItems] =useState([])
+  const [currentSelection, setCurrentSelection] = useState({
+    item: '',
+    variation: '',
+    price: 0,
+    quantity: 1
+  })
 
-  const addToCart = (item) => {
-    setCartItems([...cartItems, item])
+  const addToCart = () => {
+    setCartItems([...cartItems, currentSelection])
+    setCurrentSelection({
+      item: '',
+      variation: '',
+      price: 0,
+      quantity: 1
+    })
   }
   
   return (
@@ -25,8 +37,14 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/shop' component={Shop} />
-          <Route path='/shop/:id' render={props => <ItemDetail addToCart={addToCart} />}/>
-          <Route path='/cart' render={() => <Cart cartItems={cartItems} />} />
+          <Route path='/shop/:id' render={props => 
+            <ItemDetail 
+              addToCart={addToCart} 
+              currentSelection={currentSelection} 
+              setCurrentSelection={setCurrentSelection}
+            />
+          }/>
+          <Route path='/cart' render={() => <Cart cartItems={cartItems} setCartItems={setCartItems}/>} />
         </Switch>
       </div>
     </Router>

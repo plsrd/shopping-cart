@@ -5,16 +5,10 @@ import ImageContainer from './ImageContainer'
 import VariationContainer from './VariationContainer'
 import '../styles/itemDetail.css'
 
-const ItemDetail = ({match, addToCart}) => {
+const ItemDetail = ({match, addToCart, currentSelection, setCurrentSelection}) => {
   const item = keycapData.find(item => item.id === match.params.id)
   const { images, name, price, variations, description } = item
   const [currentIndex, setCurrentIndex]=useState(0)
-  const [currentSelection, setCurrentSelection] = useState({
-    item: name,
-    variation: '',
-    price: price,
-    quantity: 1
-  })
   const [adding, setAdding] = useState(false)
 
   const keys = Object.keys(images)
@@ -32,13 +26,14 @@ const ItemDetail = ({match, addToCart}) => {
   }
 
   const handleAddClick = () => {
-    if(currentSelection.item === '') return
-    addToCart(currentSelection)
+    if(variations.length > 0 && currentSelection.variation === '') return
+    addToCart()
     setAdding(true)
+    setCurrentSelection({...currentSelection, item: name})
   }
 
   useEffect(() => {
-    item.variations.length > 0 ? setCurrentSelection(currentSelection) : setCurrentSelection({ ...currentSelection, item: name})
+    setCurrentSelection({...currentSelection, item: name, price: price})
   }, [])
 
   useEffect(() => {
