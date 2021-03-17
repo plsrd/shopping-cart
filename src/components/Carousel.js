@@ -15,12 +15,12 @@ const Carousel = () => {
     return () => clearTimeout(timer)
   })
 
-  const {featuredImage, name, category, id} = items[currentIndex]
+  const {featuredImage, name, id} = items[currentIndex]
   return (
     <div className='carousel'>
       <div className='hero-container'>
         <div className='product-link'>
-          <Link to={`/${category}/${id}`}>{name}</Link>
+          <Link to={`/shop/${id}`}>{name}</Link>
         </div>
         <img src={featuredImage} alt={name}/>
       </div>

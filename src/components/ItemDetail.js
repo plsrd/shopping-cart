@@ -10,16 +10,15 @@ const ItemDetail = ({match}) => {
   const [quantity, setQuantity] = useState(0)
 
   const item = keycapData.find(item => item.id === match.params.id)
-  const { images } = item
-  const keys = Object.keys(images)
+  const { images, id, name, price, variations, description } = item
 
-  const {price, variations, description} = item
+  const keys = Object.keys(images)
 
   const handleVariationClick = (variation) => {
     setCurrentIndex(keys.indexOf(variation.id))
     setCurrentSelection({
       item: variation.name,
-      id: `${item.id}-${variation.name}`,
+      id: `${id}-${variation.name}`,
     })
   }
 
@@ -28,51 +27,62 @@ const ItemDetail = ({match}) => {
   }
 
   useEffect(() => {
-    item.variations.length > 0 ? setCurrentSelection({item: '', id: ''}) : setCurrentSelection({item: item.name, id: item.id})
+    item.variations.length > 0 ? setCurrentSelection({item: '', id: ''}) : setCurrentSelection({item: name, id: id})
   }, [])
 
   return (
-    <div className='item-container'>
-      <h1>{item.name}</h1>
-      <img 
-        src={images[keys[currentIndex]]}
-        alt={keys[currentIndex]}
-        className='main-image'
-      />
-      <div className='images-container'>
-        {Object.keys(images).map(key => 
+    <div className='item-detail-container'>
+      <p className='item-name'>{name}</p>
+      <div className='detail-header'>
+        <div className='image-container'>
           <img 
-            src={images[key]} 
-            onClick={() => setCurrentIndex(keys.indexOf(key))}
-            alt=''
-            className='item-images'
-          />)}
-      </div>
-      <div className='price-container'>
-        <p>{price}</p>
-        <div className='variations-container'>
-          {variations.length > 0 ? variations.map(variation => (
-            <button onClick={() => handleVariationClick(variation)}>{variation.name}</button>
-          )) : null}
-          <p>Current Selection: {currentSelection.item}</p>
-          <p>{quantity}</p>
+            src={images[keys[currentIndex]]}
+            alt={keys[currentIndex]}
+            className='main-image'
+          />
+          <div className='images-container'>
+            {Object.keys(images).map(key => 
+              <img 
+                src={images[key]} 
+                onClick={() => setCurrentIndex(keys.indexOf(key))}
+                alt=''
+                className={`item-images ${currentIndex === keys.indexOf(key) ? 'selected' : ''}`}
+              />)}
+          </div>
         </div>
-        <label></label>
-        <select
-          name='quantity' 
-          value={quantity} 
-          onChange={handleChange}
-        >
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
-        </select>
-        <button>Add to Cart</button>
       </div>
-      <p className='description-header'>{description.header}</p>
-      <p className='description-body'>{description.body}</p>
+      <div className='info-container'>
+        <div className='description-container'>
+          <p className='description-header'>{description.header}</p>
+          <p className='description-body'>{description.body}</p>
+        </div>
+        <div className='options-container'>
+          <p className='price'>${price}</p>
+          <div className='variations-container'>
+            {variations.length > 0 ? variations.map(variation => (
+              <button onClick={() => handleVariationClick(variation)}>{variation.name}</button>
+            )) : null}
+          </div>
+          {variations.length > 0 ? (
+            <p className='current-selection'>
+                {currentSelection.item !== '' ? `Current selection: ${currentSelection.item}` : 'Select Variation'}
+            </p>) : null}
+          <label>Quantity
+            <select
+              name='quantity' 
+              value={quantity} 
+              onChange={handleChange}
+            >
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+            </select>
+          </label>
+          <button className='add-btn'>Add to Cart</button>
+        </div>
+      </div>
     </div>
   )
 }
