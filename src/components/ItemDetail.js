@@ -6,36 +6,39 @@ import '../styles/itemDetail.css'
 
 
 const ItemDetail = ({match, addToCart}) => {
-  const [currentIndex, setCurrentIndex]=useState(0)
-  const [currentSelection, setCurrentSelection] = useState({})
-  const [quantity, setQuantity] = useState(0)
-  const [adding, setAdding] = useState(false)
-
   const item = keycapData.find(item => item.id === match.params.id)
   const { images, id, name, price, variations, description } = item
+  const [currentIndex, setCurrentIndex]=useState(0)
+  const [currentSelection, setCurrentSelection] = useState({
+    item: name,
+    variation: '',
+    price: price,
+    quantity: 0
+  })
+  const [adding, setAdding] = useState(false)
 
   const keys = Object.keys(images)
 
   const handleVariationClick = (variation) => {
     setCurrentIndex(keys.indexOf(variation.id))
     setCurrentSelection({
-      item: variation.name,
-      id: `${id}-${variation.name}`,
+      ...currentSelection,
+      variation: variation.name,
     })
   }
 
   const handleChange = (e) => {
-    if  (currentSelection.item !== '') { setQuantity(e.target.value) }
+    if  (currentSelection.item !== '') { setCurrentSelection({...currentSelection, quantity: e.target.value}) }
   }
 
   const handleAddClick = () => {
-    if (currentSelection === {}) return
+    if(currentSelection.item === '') return
     addToCart(currentSelection)
     setAdding(true)
   }
 
   useEffect(() => {
-    item.variations.length > 0 ? setCurrentSelection({item: '', id: ''}) : setCurrentSelection({item: name, id: id})
+    item.variations.length > 0 ? setCurrentSelection(currentSelection) : setCurrentSelection({ ...currentSelection, item: name})
   }, [])
 
   useEffect(() => {
@@ -77,12 +80,12 @@ const ItemDetail = ({match, addToCart}) => {
           </div>
           {variations.length > 0 ? (
             <p className='current-selection'>
-                {currentSelection.item !== '' ? `Current selection: ${currentSelection.item}` : 'Select Variation'}
+                {currentSelection.item !== '' ? `Current selection: ${currentSelection.variation}` : 'Select Variation'}
             </p>) : null}
           <label>Quantity
             <select
               name='quantity' 
-              value={quantity} 
+              value={currentSelection.quantity} 
               onChange={handleChange}
             >
               <option value='1'>1</option>
