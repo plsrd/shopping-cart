@@ -22,14 +22,13 @@ const ItemDetail = ({match, addToCart, currentSelection, setCurrentSelection}) =
   }
 
   const handleChange = (e) => {
-    if  (currentSelection.item !== '') { setCurrentSelection({...currentSelection, quantity: e.target.value}) }
+    if  (currentSelection.item !== '') { setCurrentSelection({...currentSelection, quantity: parseInt(e.target.value)}) }
   }
 
-  const handleAddClick = () => {
+  const handleAddClick = (item) => {
     if(variations.length > 0 && currentSelection.variation === '') return
-    addToCart()
+    addToCart(item)
     setAdding(true)
-    setCurrentSelection({...currentSelection, item: name})
   }
 
   useEffect(() => {
@@ -81,7 +80,7 @@ const ItemDetail = ({match, addToCart, currentSelection, setCurrentSelection}) =
           </label>
           <button 
             className={`add-btn${adding ? ' adding' : ''}` } 
-            onClick={handleAddClick}>
+            onClick={() => handleAddClick(item)}>
               {adding === false ? 'Add to cart' : 'Added!'}
           </button>
         </div>

@@ -19,12 +19,12 @@ const App = () => {
     quantity: 1
   })
 
-  const addToCart = () => {
+  const addToCart = (item) => {
     setCartItems([...cartItems, currentSelection])
     setCurrentSelection({
-      item: '',
+      item: item.name,
       variation: '',
-      price: 0,
+      price: item.price,
       quantity: 1
     })
   }
