@@ -75,7 +75,12 @@ const ItemDetail = ({match, addToCart}) => {
           <p className='price'>${price}</p>
           <div className='variations-container'>
             {variations.length > 0 ? variations.map(variation => (
-              <button onClick={() => handleVariationClick(variation)}>{variation.name}</button>
+              <button 
+                onClick={() => handleVariationClick(variation)}
+                className={`variation-btn ${currentSelection.variation === variation.name ? 'selected-variation' : ''}`}
+              >
+                  {variation.name}
+              </button>
             )) : null}
           </div>
           {variations.length > 0 ? (

@@ -88,7 +88,7 @@
   justify-content: flex-end;
 }
 
-.variations-container button {
+.variation-btn {
   border: none; 
   font-family: 'Source Code Pro', monospace;
   font-size: .8em;
@@ -97,7 +97,14 @@
   color: white;
 }
 
-.variations-container button:hover {
+.selected-variation {
+  box-sizing: border-box;
+  background-color: white;
+  color: rgb(218, 57, 204);
+  border: 2px solid rgb(218, 57, 204);
+}
+
+.variations-container button:hover  {
   background-color: white;
   color: rgb(218, 57, 204);
 }
