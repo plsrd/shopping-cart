@@ -11,7 +11,7 @@ const Shop = () => {
         <Link
           key={item.id}
           className='keycap'
-          to={`/shop/${item.id}`}
+          to={`/shopping-cart/shop/${item.id}`}
         >
           <p>{item.name}</p>
           <img 

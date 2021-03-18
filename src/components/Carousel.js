@@ -20,7 +20,7 @@ const Carousel = () => {
     <div className='carousel'>
       <div className='hero-container'>
         <div className='product-link'>
-          <Link to={`/shop/${id}`}>{name}</Link>
+          <Link to={`/shopping-cart/shop/${id}`}>{name}</Link>
         </div>
         <img src={featuredImage} alt={name}/>
       </div>

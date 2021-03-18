@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import ItemDetail from './components/ItemDetail'
 import Cart from './components/Cart'
+import Footer from './components/Footer'
 
 const App = () => {
   const [cartItems, setCartItems] =useState([])
@@ -34,17 +35,18 @@ const App = () => {
       <div className="App">
         <Navbar items={cartItems.length}/>
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/shop' component={Shop} />
-          <Route path='/shop/:id' render={props => 
+          <Route exact path='/shopping-cart' component={Home} />
+          <Route exact path='/shopping-cart/shop' component={Shop} />
+          <Route path='/shopping-cart/shop/:id' render={props => 
             <ItemDetail 
               addToCart={addToCart} 
               currentSelection={currentSelection} 
               setCurrentSelection={setCurrentSelection}
             />
           }/>
-          <Route path='/cart' render={() => <Cart cartItems={cartItems} setCartItems={setCartItems}/>} />
+          <Route path='/shopping-cart/cart' render={() => <Cart cartItems={cartItems} setCartItems={setCartItems}/>} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   )
