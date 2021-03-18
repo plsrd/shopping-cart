@@ -4,7 +4,6 @@ import '../styles/cart.css'
 
 const Cart = ({cartItems, setCartItems}) => {
   const [total, setTotal] = useState(0)
-  console.log(cartItems)
 
   useEffect(() => {
     let newTotal = 0
@@ -58,9 +57,9 @@ const Cart = ({cartItems, setCartItems}) => {
           <div className='cart-price-container'>
             <p>${item.price}.00</p>
             <div className='quantity-container'>
-              <button onClick={() => handleClick(item, '-')}>-</button>
+              <button onClick={() => handleClick(item, '-')} className='adjust-button'>-</button>
               <p>x{item.quantity}</p>
-              <button onClick={() => handleClick(item, '+')}>+</button>
+              <button onClick={() => handleClick(item, '+')} className='adjust-button'>+</button>
             </div>
           </div>
           <p className='item-total'>{`$${item.price * item.quantity}.00`}</p>
