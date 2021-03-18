@@ -30,7 +30,6 @@ const App = () => {
   }
   
   return (
-
     <Router>
       <div className="App">
         <Navbar items={cartItems.length}/>

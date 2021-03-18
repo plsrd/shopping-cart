@@ -18,7 +18,7 @@ const Cart = ({cartItems, setCartItems}) => {
       if (itemToChange.variation === '') {
         setCartItems(() =>
         cartItems.map(item => 
-          item.name === itemToChange.name ? {...itemToChange, quantity: newQuantity} : item)
+          item.item === itemToChange.item ? {...itemToChange, quantity: newQuantity} : item)
         )
       } else {
           setCartItems(() =>
@@ -27,17 +27,15 @@ const Cart = ({cartItems, setCartItems}) => {
             {...itemToChange, quantity: newQuantity} : item)
         )
       }
-    } else {
+    } else if (newQuantity === 0) {
       if (itemToChange.variation === '') {
         setCartItems(() =>
         cartItems.filter(item => 
-          item.name !== itemToChange.name)
+          item.item !== itemToChange.item)
         )
       } else {
         setCartItems(() =>
-        cartItems.filter(item => 
-          item.name === itemToChange.name && item.variation === itemToChange.variation)
-        )
+        cartItems.filter(item => item.variation !== itemToChange.variation))
       }
     }
   }
