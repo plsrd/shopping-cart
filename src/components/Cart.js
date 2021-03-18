@@ -6,9 +6,7 @@ const Cart = ({cartItems, setCartItems}) => {
   const [total, setTotal] = useState(0)
 
   useEffect(() => {
-    let newTotal = 0
-    cartItems.forEach(item => newTotal += (item.price * item.quantity))
-    setTotal(newTotal)
+    setTotal(cartItems.reduce((prev, cur)=> prev + (cur.price * cur.quantity), 0))
   }, [cartItems])
 
   const handleClick = (itemToChange, method) => {
